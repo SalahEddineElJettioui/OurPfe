@@ -33,7 +33,8 @@ class AuthController extends Controller
         return redirect()->intended('/listing');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $request->session()->destroy;
     }
 }

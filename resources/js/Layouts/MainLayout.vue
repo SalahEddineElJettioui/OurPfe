@@ -8,8 +8,13 @@
         <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
           <Link :href="route('listing.index')">LaraZillow</Link>
         </div>
-        <div>
+        <div v-if="user" class="flex items-center gap-4">
           <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
+          <div class="text-sm text-gray-500">{{ user.name }}</div>
+          <div :href="route('logout')" class="text-sm text-gray-500">Logout</div>
+        </div>
+        <div v-else class="flex items-center gap-4">
+          <Link :href="route('login')" class="text-sm text-gray-500">Login</Link>
         </div>
       </nav>
     </div>
@@ -30,5 +35,9 @@ import { Link, usePage } from '@inertiajs/inertia-vue3'
 const page = usePage()
 const flashSuccess = computed(
   () => page.props.value.flash.success,
+)
+
+const user = computed(
+  () => page.props.value.user,
 )
 </script>
