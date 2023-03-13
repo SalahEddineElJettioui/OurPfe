@@ -13,8 +13,9 @@
           <div class="text-sm text-gray-500">{{ user.name }}</div>
           <Link :href="route('logout')" method="delete" as="button">Logout</Link>
         </div>
-        <div v-else class="flex items-center gap-4">
-          <Link :href="route('login')" class="text-sm text-gray-500" as="button">Login</Link>
+        <div v-else class="flex items-center gap-2">
+          <Link :href="route('user-account.create')" class="text-sm text-gray-500" as="button">Register</Link>
+          <Link :href="route('login')" class="text-sm text-gray-500" as="button">Sign-in</Link>
         </div>
       </nav>
     </div>
