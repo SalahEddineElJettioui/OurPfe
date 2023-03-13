@@ -11,10 +11,10 @@
         <div v-if="user" class="flex items-center gap-4">
           <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
           <div class="text-sm text-gray-500">{{ user.name }}</div>
-          <div :href="route('logout')" class="text-sm text-gray-500">Logout</div>
+          <Link :href="route('logout')" method="delete" as="button">Logout</Link>
         </div>
         <div v-else class="flex items-center gap-4">
-          <Link :href="route('login')" class="text-sm text-gray-500">Login</Link>
+          <Link :href="route('login')" class="text-sm text-gray-500" as="button">Login</Link>
         </div>
       </nav>
     </div>
