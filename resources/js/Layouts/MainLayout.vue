@@ -41,4 +41,10 @@ const flashSuccess = computed(
 const user = computed(
   () => page.props.value.user,
 )
+
+
+const createSuccess = computed(
+    () => {
+        page.props.value.Message;
+})
 </script>
