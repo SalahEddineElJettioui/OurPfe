@@ -16,7 +16,7 @@ class ListingPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
         return true;
     }
@@ -28,7 +28,7 @@ class ListingPolicy
      * @param  \App\Models\Listing  $listing
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Listing $listing)
+    public function view(?User $user, Listing $listing)
     {
         return true;
     }
@@ -53,7 +53,7 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing)
     {
-        return true;
+        return $user->id === $listing->by_user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class ListingPolicy
      */
     public function delete(User $user, Listing $listing)
     {
-        return true;
+        return $user->id === $listing->by_user_id;
     }
 
     /**
