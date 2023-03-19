@@ -17,15 +17,13 @@ class UserAccountController extends Controller
     public function store(Request $request)
     {
 
-        $user = User::make($request->validate([
+        $user = User::create($request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed|min:8'
         ]));
 
-        $user->password = Hash::make($user->password);
 
-        $user->save();
 
         Auth::login($user);
 

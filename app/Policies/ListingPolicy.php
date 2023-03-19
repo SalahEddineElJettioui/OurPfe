@@ -22,6 +22,7 @@ class ListingPolicy
         if ($user?->is_admin) return true;
     }
 
+
     public function viewAny(?User $user)
     {
         return true;

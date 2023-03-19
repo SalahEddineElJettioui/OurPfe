@@ -13,9 +13,11 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function __construct()
     {
-        $this->authorizeResource(Listing::class, 'listing');
+        $this->authorizeResource(Listing::class,'listing');
     }
 
 
@@ -59,6 +61,7 @@ class ListingController extends Controller
                 'price' => 'required|integer|min:1|max:20000000',
             ])
         );
+
 
         return redirect()->route('listing.index')
             ->with('success', 'Listing was created!');
