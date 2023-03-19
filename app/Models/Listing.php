@@ -15,11 +15,11 @@ class Listing extends Model
         'beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price'
     ];
 
-    public function Owner() : BelongsTo {
-
-            return $this->belongsTo(
-                \App\Models\User::class,
-                'by_user_id',
-            );
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(
+            \App\Models\User::class,
+            'by_user_id'
+        );
     }
 }
