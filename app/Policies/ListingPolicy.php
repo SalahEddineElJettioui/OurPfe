@@ -16,6 +16,13 @@ class ListingPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+    public function before(?User $user, $ability)
+    {
+        if ($user?->is_admin) return true;
+    }
+
+
     public function viewAny(?User $user)
     {
         return true;
@@ -77,7 +84,7 @@ class ListingPolicy
      */
     public function restore(User $user, Listing $listing)
     {
-        return true;
+        return $user->id === $listing->by_user_id;
     }
 
     /**
@@ -89,6 +96,6 @@ class ListingPolicy
      */
     public function forceDelete(User $user, Listing $listing)
     {
-        return true;
+        return $user->id === $listing->by_user_id;
     }
 }

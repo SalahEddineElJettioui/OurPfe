@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\List_;
 
 class ListingController extends Controller
 {
@@ -13,9 +14,11 @@ class ListingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     public function __construct()
     {
         $this->authorizeResource(Listing::class, 'listing');
+
     }
 
 
@@ -47,7 +50,7 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->User()->Listing()->create(
+        $request->user()->listings()->create(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',
                 'baths' => 'required|integer|min:0|max:20',
